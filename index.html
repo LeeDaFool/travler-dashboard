@@ -8,113 +8,116 @@
   <link rel="stylesheet" href="./assets/style.css">
   <title>Travler Dashboard</title>
 </head>
-<nav class="navbar bg-light">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Travler Dashboard</span>
-  </div>
-</nav>
-<section class="container row">
-  <div class="card col">
-    <h1>Search for a City</h1>
-    <form>
-      <label for="city">City</label>
-      <input type="city" class="form-control">
-      <button class="btn btn-primary">Submit</button>
-    </form>
-    <hr>
-    <button class="btn btn-secondary">Orlando</button>
-    <br>
-    <button class="btn btn-secondary">Orlando</button>
-    <br>
-    <button class="btn btn-secondary">Orlando</button>
-    <br>
-    <button class="btn btn-secondary">Orlando</button>
-  </div>
-
-  <div class="card text-center col-8">
-    <div class="card-header">
-      Current City
-    </div>
-    <div class="card-body">
-      <h5 class="card-title text-start">City & Date</h5>
-      <ul class="text-start">
-        <li>Temp:</li>
-        <li>Wind:</li>
-        <li>Humidity:</li>
-      </ul>
-      <a href="#" class="btn btn-primary">Save</a>
-    </div>
-    <div class="card-footer text-muted">
-      5-Day Forecast
-    </div>
-  </div>
-
-  <div>
-    <h4>
-      5-Day Forecast:
-    </h4>
-    <section class="row">
-
-      <div class="card col">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>temp</li>
-            <li>wind</li>
-            <li>Humidity</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card col">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>temp</li>
-            <li>wind</li>
-            <li>Humidity</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card col">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>temp</li>
-            <li>wind</li>
-            <li>Humidity</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card col">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>temp</li>
-            <li>wind</li>
-            <li>Humidity</li>
-          </ul>
-        </div>
-      </div>
-      <div class="card col">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>temp</li>
-            <li>wind</li>
-            <li>Humidity</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    </section>
-
-</section>
 <body>
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Travler Dashboard</span>
+    </div>
+  </nav>
+  <section class="container row">
+    <div class="card col">
+      <h1 class="search-city">Search for a City</h1>
+      <form>
+        <label for="city">City</label>
+        <input type="city" class="form-control city-input" placeholder="city">
+        <button class="btn btn-primary save-current">Submit</button>
+      </form>
+      <hr>
+      <button class="btn btn-secondary recent-city">recent</button>
+      <br>
+      <button class="btn btn-secondary recent-city">recent</button>
+      <br>
+      <button class="btn btn-secondary recent-city">recent</button>
+      <br>
+      <button class="btn btn-secondary recent-city">recent</button>
+    </div>
   
+    <div class="card text-center col-8">
+      <div class="card-header current-city">
+        Current City
+      </div>
+      <div class="card-body">
+        <h5 class="card-title text-start current-city-date">City & Date</h5>
+        <ul class="text-start current-info">
+          <li class="current-temp">Temp:</li>
+          <li class="current-wind">Wind:</li>
+          <li class="current-humidity">Humidity:</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Save</a>
+      </div>
+      <div class="card-footer text-muted">
+        5-Day Forecast
+      </div>
+    </div>
+  
+    <div>
+      <h4>
+        5-Day Forecast:
+      </h4>
+      <section class="row">
+  
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul>
+              <li>temp</li>
+              <li>wind</li>
+              <li>Humidity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title ">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul>
+              <li>temp</li>
+              <li>wind</li>
+              <li>Humidity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul>
+              <li>temp</li>
+              <li>wind</li>
+              <li>Humidity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul>
+              <li>temp</li>
+              <li>wind</li>
+              <li>Humidity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card col">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <ul>
+              <li>temp</li>
+              <li>wind</li>
+              <li>Humidity</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      </section>
+  
+  </section>
+  <!-- Added link to the moment library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="./assets/script.js"></script>
 </body>
 </html>
