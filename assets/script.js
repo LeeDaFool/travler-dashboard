@@ -29,16 +29,21 @@ var recentCityBtn = document.querySelectorAll(".recent-city");
 var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
 
 
-  submitBtn.addEventListener("click", () => {
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     // let citySelection = cityInput.value;
-    console.log(cityInput.value);
+    // console.log(cityInput.value);
+    const inputCity = cityInput.value
+    todaysWeather();
+    inputCity = recentCityBtn[0];
+
   });
 
 
 // Current city forecast
 function todaysWeather () {
 
-  fetch("https://api.openweathermap.org/data/2.5/weather?units=imperial&q=orlando&appid=25c8bef2657790fdeaf81f2a54759430"
+  fetch(`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${cityInput.value}&appid=25c8bef2657790fdeaf81f2a54759430`
   
   )
   .then(function (response) {
@@ -48,9 +53,9 @@ function todaysWeather () {
     // console.log(data);
     currentCity.textContent = data.name;
     currentCityDate.textContent = `${currentDate} `;
-    currentTemp.textContent += ` ${data.main.temp}F`
-    currentWind.textContent += ` ${data.wind.speed} MPH`
-    currentHumidity.textContent += ` ${data.main.humidity}%`
+    currentTemp.textContent = `Temp: ${data.main.temp}F`
+    currentWind.textContent = `Wind: ${data.wind.speed} MPH`
+    currentHumidity.textContent = `Humidity ${data.main.humidity}%`
 
     
     
@@ -90,7 +95,15 @@ function fiveDayForecast () {
 //   }
 // }
 
-window.addEventListener("load", todaysWeather());
+// window.addEventListener("load", todaysWeather());
 window.addEventListener("load", fiveDayForecast());
 
 
+$( ".btn-primary" ).draggable({
+  drag: function( event, ui ) {
+ 
+    // Keep the left edge of the element
+    // at least 100 pixels from the container
+    ui.position.left = Math.min( 100, ui.position.left );
+  }
+});
