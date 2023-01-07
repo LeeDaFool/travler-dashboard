@@ -29,7 +29,8 @@ var recentCityBtn = document.querySelectorAll(".recent-city");
 var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
 
 
-  submitBtn.addEventListener("click", () => {
+  submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     // let citySelection = cityInput.value;
     console.log(cityInput.value);
   });
