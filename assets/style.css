@@ -1,0 +1,33 @@
+/* body {
+    display: flex;
+} */
+
+nav.navbar {
+    display: inline;
+    border-color: #6e0e0e;
+}
+
+section.container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.container-fluid {
+    background-color: #000000;
+    border-color: #6e0e0e;
+    
+}
+
+span.navbar-brand {
+    color: #fdfdfd;
+}
+
+.recent-city {
+    background-color: #6e0e0e;
+    border-radius: .5rem;
+    border-color: #000000;
+}
+
+div.card {
+
+}
