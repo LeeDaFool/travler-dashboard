@@ -77,7 +77,44 @@ function fiveDayForecast () {
         if(data.list[i].dt_txt == fiveDays[n])
         console.log(data.list[i]);
         let forecastData = data.list[i];
-
+        for(let l = 0; n < forecastList.length; l++) {
+          forecastList[0].innerHTML = ` <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <ul>
+            <li>Temp ${data.list[0].main.temp}F</li>
+            <li>Wind ${data.list[0].wind.speed}</li>
+            <li>Humidity ${data.list[0].main.humidity}</li>
+          </ul>`;
+          forecastList[1].innerHTML = ` <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <ul>
+            <li>Temp ${data.list[1].main.temp}F</li>
+            <li>Wind ${data.list[1].wind.speed}</li>
+            <li>Humidity ${data.list[1].main.humidity}</li>
+          </ul>`;
+          forecastList[2].innerHTML = ` <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <ul>
+            <li>Temp ${data.list[2].main.temp}F</li>
+            <li>Wind ${data.list[2].wind.speed}</li>
+            <li>Humidity ${data.list[2].main.humidity}</li>
+          </ul>`;
+          forecastList[3].innerHTML = ` <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <ul>
+            <li>Temp ${data.list[3].main.temp}F</li>
+            <li>Wind ${data.list[3].wind.speed}</li>
+            <li>Humidity ${data.list[3].main.humidity}</li>
+          </ul>`;
+          forecastList[4].innerHTML = ` <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <ul>
+            <li>Temp ${data.list[4].main.temp}F</li>
+            <li>Wind ${data.list[4].wind.speed}</li>
+            <li>Humidity ${data.list[4].main.humidity}</li>
+          </ul>`;
+        }
+        
       }
     }  
   });
@@ -97,13 +134,3 @@ function fiveDayForecast () {
 
 // window.addEventListener("load", todaysWeather());
 window.addEventListener("load", fiveDayForecast());
-
-
-$( ".btn-primary" ).draggable({
-  drag: function( event, ui ) {
- 
-    // Keep the left edge of the element
-    // at least 100 pixels from the container
-    ui.position.left = Math.min( 100, ui.position.left );
-  }
-});
