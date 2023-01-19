@@ -21,23 +21,12 @@ var currentWind = document.querySelector(".current-wind");
 var currentHumidity = document.querySelector(".current-humidity");
 
 
-var cityInput = document.querySelector(".city-input");
+let cityInput = document.querySelector(".city-input");
 // Buttons
 var submitBtn = document.querySelector(".save-current");
 var recentCityBtn = document.querySelectorAll(".recent-city");
 
 var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
-
-
-  submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    // let citySelection = cityInput.value;
-    // console.log(cityInput.value);
-    const inputCity = cityInput.value
-    todaysWeather();
-    inputCity = recentCityBtn[0];
-
-  });
 
 
 // Current city forecast
@@ -63,63 +52,55 @@ function todaysWeather () {
 };
 
 function fiveDayForecast () {
-  fetch("https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=orlando&appid=25c8bef2657790fdeaf81f2a54759430"
-  
-  )
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    // console.log(data);
-    for (let i = 0; i < data.list.length; i++) {
-      // console.log(data.list[i].dt_txt);
-      for(let n = 0; n < fiveDays.length; n++) {
-        if(data.list[i].dt_txt == fiveDays[n])
-        console.log(data.list[i]);
-        let forecastData = data.list[i];
-        for(let l = 0; n < forecastList.length; l++) {
-          forecastList[0].innerHTML = ` <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>Temp ${data.list[0].main.temp}F</li>
-            <li>Wind ${data.list[0].wind.speed}</li>
-            <li>Humidity ${data.list[0].main.humidity}</li>
-          </ul>`;
-          forecastList[1].innerHTML = ` <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>Temp ${data.list[1].main.temp}F</li>
-            <li>Wind ${data.list[1].wind.speed}</li>
-            <li>Humidity ${data.list[1].main.humidity}</li>
-          </ul>`;
-          forecastList[2].innerHTML = ` <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>Temp ${data.list[2].main.temp}F</li>
-            <li>Wind ${data.list[2].wind.speed}</li>
-            <li>Humidity ${data.list[2].main.humidity}</li>
-          </ul>`;
-          forecastList[3].innerHTML = ` <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>Temp ${data.list[3].main.temp}F</li>
-            <li>Wind ${data.list[3].wind.speed}</li>
-            <li>Humidity ${data.list[3].main.humidity}</li>
-          </ul>`;
-          forecastList[4].innerHTML = ` <h5 class="card-title">Card title</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <ul>
-            <li>Temp ${data.list[4].main.temp}F</li>
-            <li>Wind ${data.list[4].wind.speed}</li>
-            <li>Humidity ${data.list[4].main.humidity}</li>
-          </ul>`;
+  if(cityInput && cityInput.value) {
+
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=${cityInput.value}&appid=25c8bef2657790fdeaf81f2a54759430`
+    
+    )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      // console.log(data);
+      for (let i = 0; i < data.list.length; i++) {
+        // console.log(data.list[i].dt_txt);
+        for(let n = 0; n < fiveDays.length; n++) {
+          if(data.list[i].dt_txt == fiveDays[n]) {
+
+            console.log(data.list[i]);
+            let forecastDataTemp = data.list[i].main.temp;
+            let forecastDataWind = data.list[i].wind.speed;
+            let forecastDataHum = data.list[i].main.humidity;
+            // console.log(forecastData);
+            for(let l = 0; l < forecastList.length; l++) {
+              
+              
+              forecastList[l].innerHTML = ` <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <ul>
+                <li>Temp ${forecastDataTemp}F</li>
+                <li>Wind ${data.list[l].wind.speed}</li>
+                <li>Humidity ${data.list[l].main.humidity}</li>
+              </ul>`;
+            }
+          }
+          
         }
-        
-      }
-    }  
-  });
+      }  
+    });
+  }
 }
 
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  // let citySelection = cityInput.value;
+  // console.log(cityInput.value);
+  let inputCity = cityInput.value
+  todaysWeather();
+  inputCity = recentCityBtn[0];
+  fiveDayForecast();
+
+});
 
 // function inputCityWeather() {
   
@@ -133,4 +114,4 @@ function fiveDayForecast () {
 // }
 
 // window.addEventListener("load", todaysWeather());
-window.addEventListener("load", fiveDayForecast());
+// window.addEventListener("load", fiveDayForecast());
