@@ -28,7 +28,7 @@ let recentCityBtn = document.querySelectorAll(".recent-city");
 
 var weatherAPI = "https://api.openweathermap.org/data/2.5/weather?units=imperial&q=";
 
-let recentCity = [] || JSON.parse(localStorage.getItem("recentCity"));
+let recentCity = JSON.parse(localStorage.getItem("recentCity")) || [];
 
 
   submitBtn.addEventListener("click", (e) => {
@@ -46,11 +46,15 @@ let recentCity = [] || JSON.parse(localStorage.getItem("recentCity"));
 
   });
 
+  
+  // Current city forecast
+  function todaysWeather () {
+  let latestCity = JSON.parse(localStorage.getItem("recentCity"));
+  if(!latestCity === null) {
+    return latestCity.slice(-1);
+  }
 
-// Current city forecast
-function todaysWeather () {
-
-  fetch(`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${cityInput.value}&appid=25c8bef2657790fdeaf81f2a54759430`
+  fetch(`https://api.openweathermap.org/data/2.5/weather?units=imperial&q=${latestCity || cityInput.value}&appid=25c8bef2657790fdeaf81f2a54759430`
   
   )
   .then(function (response) {
@@ -83,18 +87,19 @@ function fiveDayForecast () {
       for (let i = 0; i < data.list.length; i++) {
         // console.log(data.list[i].dt_txt);
         for(let n = 0; n < fiveDays.length; n++) {
-          if(data.list[i].dt_txt == fiveDays[n])
-          console.log(data.list[i]);
-          let forecastData = data.list[i];
-          for(let l = 0; l < forecastList.length; l++) {
-            forecastList[l].innerHTML = ` <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <ul>
-              <li>Temp ${data.list[l].main.temp}F</li>
-              <li>Wind ${data.list[l].wind.speed}</li>
-              <li>Humidity ${data.list[l].main.humidity}</li>
-            </ul>`;
-          }
+          
+            for(let l = 0; l < forecastList.length; l++) {
+              if(data.list[i].dt_txt == fiveDays[n]) {
+                return console.log(data.list[i]);
+                  forecastList[l].innerHTML = ` <h5 class="card-title">Card title</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  <ul>
+                    <li>Temp ${data.list[i].main.temp}F</li>
+                    <li>Wind ${data.list[i].wind.speed}</li>
+                    <li>Humidity ${data.list[i].main.humidity}</li>
+                  </ul>`;
+              }
+            }
         }
       }
     })}}
@@ -122,5 +127,7 @@ submitBtn.addEventListener("click", (e) => {
 //   }
 // }
 
-// window.addEventListener("load", todaysWeather());
+if(recentCity[0]) {
+   window.addEventListener("load", todaysWeather());
+}
 // window.addEventListener("load", fiveDayForecast());
